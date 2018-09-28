@@ -1,5 +1,8 @@
-.col-6 {
+.col-12 {
   border: 1px solid black;
+}
+#score-board {
+  margin-right: 2em;
 }
 h1,h3 {
   text-align: center;
@@ -16,8 +19,12 @@ h1,h3 {
 .notPlaying {
   opacity: 0.5;
 }
-/* .buttons {
+#game-board {
+  border: 1px solid black;
+  position: relative;
+}
+.buttons {
   position: absolute;
-  bottom: 1em;
-  left: 32em;
-} */
+  bottom: 0;
+  left: 40%;
+}

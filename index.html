@@ -23,24 +23,30 @@
         <button id="playBtn" class="btn btn-success btn-lg">Play Game</button>
       </div>
     </div>
-    <div id="new-game"></div>
     <div id="game">
       <div class="row">
-        <div class="col-6" id="user1">
-          <h3 class="user1Win">User 1</h3>
-          <h2 class="globalScore">Score:<span class="globalScoreDisplay1">0</span></h2>
-          <img id="player1Dice" src="">
-          <p class="roundScore">Round Score:<span class="roundScoreDisplay1">0</span></p>
+        <div class="col-7" id="score-board">
+          <div class="row">
+            <div class="col-12" id="user1">
+              <h3 class="user1Win">User 1</h3>
+              <h2 class="globalScore">Score:<span class="globalScoreDisplay1">0</span></h2>
+              <img id="player1Dice" src="">
+              <p class="roundScore">Round Score:<span class="roundScoreDisplay1">0</span></p>
+            </div>
+            <div class="col-12" id="user2">
+              <h3 class="user2Win">User 2</h3>
+              <h2 class="globalScore">Score:<span class="globalScoreDisplay2">0</span></h2>
+              <img id="player2Dice" src="">
+              <p class="roundScore">Round Score:<span class="roundScoreDisplay2">0</span></p>
+            </div>
+          </div>
         </div>
-        <div class="buttons">
-          <button class="btn btn-info player1-roll">Roll</button>
-          <button class="btn btn-info player1-hold">Hold</button>
-        </div>
-        <div class="col-6" id="user2">
-          <h3 class="user2Win">User 2</h3>
-          <h2 class="globalScore">Score:<span class="globalScoreDisplay2">0</span></h2>
-          <img id="player2Dice" src="">
-          <p class="roundScore">Round Score:<span class="roundScoreDisplay2">0</span></p>
+        <div class="col" id="game-board">
+          <h3>Current Player: <span id="current-player"></span></h3>
+          <div class="buttons">
+              <button class="btn btn-info player1-roll">Roll</button>
+              <button class="btn btn-info player1-hold">Hold</button>
+          </div>
         </div>
       </div>
     </div>

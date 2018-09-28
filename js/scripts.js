@@ -25,8 +25,10 @@ function hold() {
     globalScore2+=roundScore;
     $(".globalScoreDisplay" + userPlaying).text(globalScore2);
   }
-  if(globalScore1 >= 30 || globalScore2 >= 30) {
+  if(globalScore1 >= 20 || globalScore2 >= 20) {
     $(".user" + userPlaying + "Win").text("Winner");
+    $("#game-board h3").text("Winner: " + "User " + userPlaying)
+    $("#current-player").text("User 1")
     newGame();
   } else {
     otherPlayer();
@@ -45,6 +47,7 @@ function otherPlayer() {
     userPlaying = 1;
   }
   roundScore = 0;
+  $("#current-player").text("User " + userPlaying)
 }
 function newGame() {
   roundScore = 0;
@@ -57,6 +60,7 @@ function newGame() {
 }
 
 $(document).ready(function() {
+  $("#current-player").text("User " + userPlaying);
   $("#user2").addClass("notPlaying");
   $("#description h4").click(function() {
     $(".gameplay").slideToggle();
