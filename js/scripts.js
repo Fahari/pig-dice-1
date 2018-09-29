@@ -1,21 +1,15 @@
-function pigDice(userToStart,p1,p2) {
-  this.userToStart = userToStart;
-  this.player1 = p1;
-  this.player2 = p2;
-  this.userPlaying = userToStart;
-}
+function pigDice() {}
+pigDice.prototype.userToStart = 1;
+pigDice.prototype.userPlaying = 1;
 pigDice.prototype.roundScore = 0;
 pigDice.prototype.finalScore = 20;
 pigDice.prototype.globalScore1 = 0;
 pigDice.prototype.globalScore2 = 0;
 
 //pigDice.prototype.userPlaying = this.userToStart;
-pigDice.prototype.easyArray = [1,2,3,4,5,6];
 pigDice.prototype.rollDice =  function() {
   //Generate a random number to select the item in the array
-  var diceSelector = Math.floor(Math.random() * this.easyArray.length);
-  //select an item from the array
-  var dice = this.easyArray[diceSelector];
+  var dice = Math.floor(Math.random() * 6) + 1;
   $(".dice-image").show();
   $(".dice-image img").attr("src","../images/dice-" + dice + ".png");
   if(dice !== 1) {
@@ -26,21 +20,6 @@ pigDice.prototype.rollDice =  function() {
     $(".dice-image").hide();
     alert("Oh no you got a 1");
     this.otherPlayer();
-  }
-}
-pigDice.prototype.userNotPlaying = function() {
-  var toReturn
-  if(this.userPlaying === 1) {
-    return 2
-  } else {
-    return 1
-  }
-}
-pigDice.prototype.userNotStarting = function() {
-  if (this.userToStart === 1) {
-    return 2
-  } else {
-    return 1;
   }
 }
 pigDice.prototype.hold = function(){ 
@@ -58,16 +37,17 @@ pigDice.prototype.winner = function() {
   if(this.globalScore1 >= this.finalScore || this.globalScore2 >= this.finalScore) {
     $(".user" + this.userPlaying + "Win").text("Winner!!");
     if(this.userPlaying === 1) {
-      $("#game-board h3").text("Winner: " + this.player1);
+      $("#game-board h5").text("Winner: Player 1");
     } else {
-      $("#game-board h3").text("Winner: " + this.player2);
+      $("#game-board h5").text("Winner: Player 2");
     }
     // $("#current-player").text("User" + this.userPlaying); 
     $("#rematch").show();
     this.roundScore = 0;
     $(".roundScoreDisplay1").text(this.roundScore);
     $(".roundScoreDisplay2").text(this.roundScore);
-    this.gameOver();
+    $(".player-roll").attr("disabled",true);
+    $(".player-hold").attr("disabled",true);
   } else {
     this.otherPlayer();
   }
@@ -77,14 +57,15 @@ pigDice.prototype.otherPlayer = function() {
   if(this.userPlaying === 1) {
     $("#user1").addClass("notPlaying");
     $("#user2").removeClass("notPlaying");
+    $("#game-board h5").text("Current Player: Player 2");
     this.userPlaying = 2;
   } else {
     $("#user2").addClass("notPlaying");
     $("#user1").removeClass("notPlaying");
+    $("#game-board h5").text("Current Player: Player 1");
     this.userPlaying = 1;
   }
   this.roundScore = 0;
-  $("#current-player").text("User " + this.userPlaying)
 }
 pigDice.prototype.newGame  = function() {
   this.roundScore = 0;
@@ -96,20 +77,14 @@ pigDice.prototype.newGame  = function() {
   $(".globalScoreDisplay2").text(this.globalScore2);
   $(".player-roll").attr("disabled",false);
   $(".player-hold").attr("disabled",false);
-}
-pigDice.prototype.gameOver = function() {
-  $(".player-roll").attr("disabled",true);
-  $(".player-hold").attr("disabled",true);
+  $(".user1Win").text("Player 1");
+  $(".user2Win").text("Player 2");
+  this.userPlaying = 1;
 }
 pigDice.prototype.initial = function() {
-  if(this.userToStart === 1) {
-    $("#game-board h3").text(`Current Player: ${this.player1}`);
-  } else {
-    $("#game-board h3").text(`Current Player: ${this.player2}`);
-  }
-  $(".user1Win").text(this.player1);
-  $(".user2Win").text(this.player2);
-  $("#user" + this.userNotStarting()).addClass("notPlaying");
+  $("#game-board h5").text(`Current Player: Player 1`);
+  $("#user1").removeClass("notPlaying");
+  $("#user2").addClass("notPlaying");
   $("#rematch").hide();
 }
 $(document).ready(function() {
@@ -120,10 +95,7 @@ $(document).ready(function() {
     $("#description").hide();
     $("#game").show();
     event.preventDefault();
-    var playerOne = $("#userOne").val();
-    var playerTwo = $("#userTwo").val();
-    var userStarting = parseInt($("input:radio[name=starter]:checked").val());
-    game = new pigDice(userStarting,playerOne,playerTwo);
+    game = new pigDice();
     $("#settings").hide();
     $("#game").show();
     game.initial();

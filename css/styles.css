@@ -1,12 +1,15 @@
 body {
   background: whitesmoke;
   font-size: 1.2em;
+  background: linear-gradient(to right, #ee9ca7, #ffdde1);
 }
-.col-4,.col-2 {
+.col-4,.col-3 {
   border: 1px solid black;
   padding: 20px;
+  border-radius: 9px;
+  background: whitesmoke; 
 }
-.col-2 {
+.col-3 {
   height: 200px;
 }
 .col-4 {
@@ -21,6 +24,7 @@ h1,h3 {
 }
 #game {
   display: none;
+  margin-top: 2%;
 }
 #rematch {
   display: none;
@@ -41,25 +45,32 @@ h1,h3 {
   margin-top: 40px;
 }
 .notPlaying {
-  opacity: 0.5;
+  opacity: 0.7;
+}
+.btn-info {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
 }
 #game-board {
   border: 1px solid black;
   position: relative;
   display: flex;
   align-self: center;
+  text-align: center;
   justify-content: center;
 }
 .buttons {
   position: absolute;
   bottom: 0;
-  left: 50px;
+  left: 105px;
+  text-align: center;
 }
 .dice-image {
-  /* position: relative;
-  bottom: 4.3em; */
-  margin: auto auto;
-  text-align: center;
+  display: none;
+  position: relative;
+  bottom: 1.3em;
+  border: 1px solid black;
 }
 #new-buttons {
   text-align: center;
