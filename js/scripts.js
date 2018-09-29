@@ -1,3 +1,4 @@
+// BUSINESS LOGIC
 function pigDice(userToStart,p1,p2) {
   this.userToStart = userToStart;
   this.player1 = p1;
@@ -62,12 +63,12 @@ pigDice.prototype.winner = function() {
     } else {
       $("#game-board h3").text("Winner: " + this.player2);
     }
-    // $("#current-player").text("User" + this.userPlaying); 
     $("#rematch").show();
     this.roundScore = 0;
     $(".roundScoreDisplay1").text(this.roundScore);
     $(".roundScoreDisplay2").text(this.roundScore);
-    this.gameOver();
+    $(".player-roll").attr("disabled",true);
+    $(".player-hold").attr("disabled",true);
   } else {
     this.otherPlayer();
   }
@@ -83,8 +84,15 @@ pigDice.prototype.otherPlayer = function() {
     $("#user1").removeClass("notPlaying");
     this.userPlaying = 1;
   }
+  this.playerSwitch();
   this.roundScore = 0;
-  $("#current-player").text("User " + this.userPlaying)
+}
+pigDice.prototype.playerSwitch = function() {
+  if(this.userPlaying === 2) {
+    $("#current-player").text(this.player2);
+  } else {
+    $("#current-player").text(this.player1);
+  }
 }
 pigDice.prototype.newGame  = function() {
   this.roundScore = 0;
@@ -97,21 +105,19 @@ pigDice.prototype.newGame  = function() {
   $(".player-roll").attr("disabled",false);
   $(".player-hold").attr("disabled",false);
 }
-pigDice.prototype.gameOver = function() {
-  $(".player-roll").attr("disabled",true);
-  $(".player-hold").attr("disabled",true);
-}
 pigDice.prototype.initial = function() {
   if(this.userToStart === 1) {
-    $("#game-board h3").text(`Current Player: ${this.player1}`);
+    $("#game-board h3").text("Current Player: " + this.player1);
   } else {
-    $("#game-board h3").text(`Current Player: ${this.player2}`);
+    $("#game-board h3").text("Current Player: " + this.player2);
   }
   $(".user1Win").text(this.player1);
   $(".user2Win").text(this.player2);
   $("#user" + this.userNotStarting()).addClass("notPlaying");
   $("#rematch").hide();
 }
+
+//USER INTERFACE LOGIC
 $(document).ready(function() {
   $("#description h4").click(function() {
     $(".gameplay").slideToggle();
@@ -122,8 +128,8 @@ $(document).ready(function() {
   })
   $("#starter").click(function(event) {
     event.preventDefault();
-    var playerOne = $("#userOne").val();
-    var playerTwo = $("#userTwo").val();
+    var playerOne = $("#userOne").val().toUpperCase();
+    var playerTwo = $("#userTwo").val().toUpperCase();
     var userStarting = parseInt($("input:radio[name=starter]:checked").val());
     game = new pigDice(userStarting,playerOne,playerTwo);
     $("#settings").hide();
@@ -135,6 +141,12 @@ $(document).ready(function() {
   })
   $(".player-hold").click(function() {
     game.hold();
+    console.log(game.player2);
+    if(game.userPlaying == 1) {
+      $("#current-player").html(game.player1);
+    } else {
+      $("#current-player").html(game.player2);
+    }
   })
   $("#reset").click(function() {
     location.reload();
