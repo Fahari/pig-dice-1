@@ -2,10 +2,10 @@ function pigDice(userToStart,p1,p2) {
   this.userToStart = userToStart;
   this.player1 = p1;
   this.player2 = p2;
-  this.userNotPlaying = userToStart;
+  this.userPlaying = userToStart;
 }
 pigDice.prototype.roundScore = 0;
-pigDice.prototype.finalScore = 10;
+pigDice.prototype.finalScore = 20;
 pigDice.prototype.globalScore1 = 0;
 pigDice.prototype.globalScore2 = 0;
 
@@ -17,7 +17,6 @@ pigDice.prototype.rollDice =  function() {
   //select an item from the array
   var dice = this.easyArray[diceSelector];
   $(".dice-image").show();
-  console.log(this.userPlaying);
   $(".dice-image img").attr("src","../images/dice-" + dice + ".png");
   if(dice !== 1) {
   //add the dice to the round score
@@ -28,16 +27,14 @@ pigDice.prototype.rollDice =  function() {
     alert("Oh no you got a 1");
     this.otherPlayer();
   }
-  console.log(this)
 }
 pigDice.prototype.userNotPlaying = function() {
   var toReturn
   if(this.userPlaying === 1) {
-    toReturn = 2;
+    return 2
   } else {
-    toReturn = 1;
+    return 1
   }
-  return toReturn;
 }
 pigDice.prototype.userNotStarting = function() {
   if (this.userToStart === 1) {
@@ -50,18 +47,22 @@ pigDice.prototype.hold = function(){
   $(".dice-image").hide();
   if(this.userPlaying === 1) {
     this.globalScore1+=this.roundScore;
-    $(".globalScoreDisplay" + this.userPlaying).text(this.globalScore1);
+    $(".globalScoreDisplay1").text(this.globalScore1);
   } else {
     this.globalScore2+=this.roundScore;
-    $(".globalScoreDisplay" + this.userPlaying).text(this.globalScore2);
+    $(".globalScoreDisplay2").text(this.globalScore2);
   }
   this.winner();
 }
 pigDice.prototype.winner = function() {
   if(this.globalScore1 >= this.finalScore || this.globalScore2 >= this.finalScore) {
     $(".user" + this.userPlaying + "Win").text("Winner!!");
-    $("#game-board h3").text("Winner: " + "User " + this.userPlaying)
-    $("#current-player").text("User 1")
+    if(this.userPlaying === 1) {
+      $("#game-board h3").text("Winner: " + this.player1);
+    } else {
+      $("#game-board h3").text("Winner: " + this.player2);
+    }
+    // $("#current-player").text("User" + this.userPlaying); 
     $("#rematch").show();
     this.roundScore = 0;
     $(".roundScoreDisplay1").text(this.roundScore);
@@ -101,11 +102,14 @@ pigDice.prototype.gameOver = function() {
   $(".player-hold").attr("disabled",true);
 }
 pigDice.prototype.initial = function() {
-  $("#game-board h3").text("Current Player: " + this.userToStart);
+  if(this.userToStart === 1) {
+    $("#game-board h3").text(`Current Player: ${this.player1}`);
+  } else {
+    $("#game-board h3").text(`Current Player: ${this.player2}`);
+  }
   $(".user1Win").text(this.player1);
   $(".user2Win").text(this.player2);
   $("#user" + this.userNotStarting()).addClass("notPlaying");
-  $("#user" + this.userToStart).removeClass("notPlaying");
   $("#rematch").hide();
 }
 $(document).ready(function() {
@@ -122,9 +126,9 @@ $(document).ready(function() {
     var playerTwo = $("#userTwo").val();
     var userStarting = parseInt($("input:radio[name=starter]:checked").val());
     game = new pigDice(userStarting,playerOne,playerTwo);
-    game.initial();
     $("#settings").hide();
     $("#game").show();
+    game.initial();
   })
   $(".player-roll").click(function() {
     game.rollDice(); 
