@@ -1,17 +1,23 @@
 body {
   background: whitesmoke;
+  font-size: 1.2em;
 }
-.col-12 {
+.col-4,.col-2 {
   border: 1px solid black;
+  padding: 20px;
 }
-#score-board {
-  margin-right: 2em;
+.col-2 {
+  height: 200px;
+}
+.col-4 {
+  height: 350px;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
 }
 h1,h3 {
   text-align: center;
-}
-#settings {
-  display: none;
 }
 #game {
   display: none;
@@ -22,8 +28,17 @@ h1,h3 {
 .gameplay {
   display: none;
 }
+.roundScore {
+  text-align: center;
+}
 .row {
   position: relative;
+}
+.globalScoreDisplay1, .globalScoreDisplay2 {
+  font-size: 80px;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
 }
 .notPlaying {
   opacity: 0.5;
@@ -31,16 +46,20 @@ h1,h3 {
 #game-board {
   border: 1px solid black;
   position: relative;
+  display: flex;
+  align-self: center;
+  justify-content: center;
 }
 .buttons {
   position: absolute;
   bottom: 0;
-  left: 40%;
+  left: 50px;
 }
 .dice-image {
-  position: relative;
-  bottom: 4.3em;
-  display: none;
+  /* position: relative;
+  bottom: 4.3em; */
+  margin: auto auto;
+  text-align: center;
 }
 #new-buttons {
   text-align: center;
