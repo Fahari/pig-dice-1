@@ -1,21 +1,23 @@
-function pigDice(userToStart,player1,player2) {
+function pigDice(userToStart,p1,p2) {
   this.userToStart = userToStart;
-  this.player1 = player1;
-  this.player2 = player2;
+  this.player1 = p1;
+  this.player2 = p2;
+  this.userNotPlaying = userToStart;
 }
+pigDice.prototype.roundScore = 0;
 pigDice.prototype.finalScore = 10;
 pigDice.prototype.globalScore1 = 0;
 pigDice.prototype.globalScore2 = 0;
 
-pigDice.prototype.userPlaying = this.userToStart;
+//pigDice.prototype.userPlaying = this.userToStart;
 pigDice.prototype.easyArray = [1,2,3,4,5,6];
 pigDice.prototype.rollDice =  function() {
   //Generate a random number to select the item in the array
   var diceSelector = Math.floor(Math.random() * this.easyArray.length);
   //select an item from the array
-  // var dice = easyArray[diceSelector];
-  var dice = Math.floor(Math.random() * 6) + 1;
+  var dice = this.easyArray[diceSelector];
   $(".dice-image").show();
+  console.log(this.userPlaying);
   $(".dice-image img").attr("src","../images/dice-" + dice + ".png");
   if(dice !== 1) {
   //add the dice to the round score
@@ -26,7 +28,7 @@ pigDice.prototype.rollDice =  function() {
     alert("Oh no you got a 1");
     this.otherPlayer();
   }
-
+  console.log(this)
 }
 pigDice.prototype.userNotPlaying = function() {
   var toReturn
@@ -100,8 +102,8 @@ pigDice.prototype.gameOver = function() {
 }
 pigDice.prototype.initial = function() {
   $("#game-board h3").text("Current Player: " + this.userToStart);
-  $(".user1Win").text("User 1");
-  $(".user2Win").text("User 2");
+  $(".user1Win").text(this.player1);
+  $(".user2Win").text(this.player2);
   $("#user" + this.userNotStarting()).addClass("notPlaying");
   $("#user" + this.userToStart).removeClass("notPlaying");
   $("#rematch").hide();
@@ -116,10 +118,10 @@ $(document).ready(function() {
   })
   $("#starter").click(function(event) {
     event.preventDefault();
-    var player1 = $("#1").val();
-    var player2 = $("#2").val();
+    var playerOne = $("#userOne").val();
+    var playerTwo = $("#userTwo").val();
     var userStarting = parseInt($("input:radio[name=starter]:checked").val());
-    game = new pigDice(userStarting,player1,player2);
+    game = new pigDice(userStarting,playerOne,playerTwo);
     game.initial();
     $("#settings").hide();
     $("#game").show();
