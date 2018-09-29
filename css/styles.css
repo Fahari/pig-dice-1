@@ -1,3 +1,6 @@
+body {
+  background: whitesmoke;
+}
 .col-12 {
   border: 1px solid black;
 }
@@ -7,7 +10,13 @@
 h1,h3 {
   text-align: center;
 }
+#settings {
+  display: none;
+}
 #game {
+  display: none;
+}
+#rematch {
   display: none;
 }
 .gameplay {
@@ -27,4 +36,13 @@ h1,h3 {
   position: absolute;
   bottom: 0;
   left: 40%;
+}
+.dice-image {
+  position: relative;
+  bottom: 4.3em;
+  display: none;
+}
+#new-buttons {
+  text-align: center;
+  margin-top: 30px;
 }
