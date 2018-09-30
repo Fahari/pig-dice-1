@@ -6,7 +6,7 @@ function pigDice(p1,p2) {
 pigDice.prototype.userToStart = 1;
 pigDice.prototype.userPlaying = 1;
 pigDice.prototype.roundScore = 0;
-pigDice.prototype.finalScore = 100;
+pigDice.prototype.finalScore = 10;
 pigDice.prototype.globalScore1 = 0;
 pigDice.prototype.globalScore2 = 0;
 pigDice.prototype.rollDice =  function() {
