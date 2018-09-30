@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="images/icon.png">
-  <link href="https://fonts.googleapis.com/css?family=Barrio" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Englebert" rel="stylesheet">
   <title>Pig Dice</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
       <div id="description">
         <h2 class="text-center">Welcome to Pig Dice</h2>
         <p class="lead">Pig Dice is a cool game that you can play with your friends</p>
-        <h4>GamePlay</h4>
+        <h4 id="gameplay">How to Play</h4>
         <div class="gameplay">
             <p>Each turn, a player repeatedly rolls a die until either a 1 is rolled or the player decides to "hold"</p>
             <p>If the player rolls a 1, they score nothing and it becomes the next player's turn.</p>
@@ -22,10 +22,21 @@
             <p>If a player chooses to "hold", their turn total is added to their score, and it becomes the next player's turn.</p>
             <p class="lead">The first player to score 100 or more points wins.</p>
         </div>
+        <form class="form-inline">
+          <div class="form-group">
+            <input type="text" class="form-control" id="player1">
+            <label for="player1">Player 1</label>
+          </div>
+          <div class="form-group">
+              <input type="text" class="form-control" id="player2">
+              <label for="player2">Player 2</label>
+            </div>
+        </form>
         <button id="playBtn" href="index2.html" class="btn btn-success btn-lg">Play Game</button>
       </div>
     </div>
     <div id="game">
+      <h4 class="text-center" id="announcer">Game On!</h4>
       <div class="row">
         <div class="col-4" id="user1">
           <h3 class="user1Win">Player 1</h3>
