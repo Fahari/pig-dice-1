@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="images/icon.png">
   <link href="https://fonts.googleapis.com/css?family=Englebert" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Walter+Turncoat" rel="stylesheet">
   <title>Pig Dice</title>
 </head>
 <body>
@@ -14,7 +15,7 @@
       <div id="description">
         <h2 class="text-center">Welcome to Pig Dice</h2>
         <p class="lead">Pig Dice is a cool game that you can play with your friends</p>
-        <h4 id="gameplay">How to Play</h4>
+        <h4 class="d-inline-block" id="gameplay">How to Play</h4>
         <div class="gameplay">
             <p>Each turn, a player repeatedly rolls a die until either a 1 is rolled or the player decides to "hold"</p>
             <p>If the player rolls a 1, they score nothing and it becomes the next player's turn.</p>
@@ -24,13 +25,13 @@
         </div>
         <form class="form-inline">
           <div class="form-group">
+            <label class="mx-3" for="player1">Player 1</label>
             <input type="text" class="form-control" id="player1">
-            <label for="player1">Player 1</label>
           </div>
           <div class="form-group">
-              <input type="text" class="form-control" id="player2">
-              <label for="player2">Player 2</label>
-            </div>
+            <label class="mx-3" for="player2">Player 2</label>
+            <input type="text" class="form-control" id="player2">
+          </div>
         </form>
         <button id="playBtn" href="index2.html" class="btn btn-success btn-lg">Play Game</button>
       </div>
@@ -38,24 +39,24 @@
     <div id="game">
       <h4 class="text-center" id="announcer">Game On!</h4>
       <div class="row">
-        <div class="col-4" id="user1">
+        <div class="columns col-sm-7 col-md-4" id="user1">
           <h3 class="user1Win">Player 1</h3>
           <h2><span class="globalScoreDisplay1">0</span></h2>
           <img id="player1Dice" src="">
           <h5 class="roundScore">Round Score:</h5>
           <p class="roundScore"><span class="roundScoreDisplay1">0</span></p>
         </div>
-        <div class="col-3" id="game-board">
+        <div class="columns col-sm-7 col-md-3" id="game-board">
           <h5>Current Player: <span id="current-player"></span></h5>
           <div class="buttons">
               <div class="dice-image">
                 <img class="img-fluid" height="70px" width="70px" src="" alt="">
               </div>
-              <button class="btn player-roll btn-sm btn-info">R</button>
-              <button class="btn player-hold btn-sm btn-info">H</button>
+              <button class="btn player-roll btn-sm btn-play">R</button>
+              <button class="btn player-hold btn-sm btn-play">H</button>
           </div>
         </div>
-        <div class="col-4" id="user2">
+        <div class="columns col-sm-7 col-md-4" id="user2">
           <h3 class="user2Win">Player 2</h3>
           <h2><span class="globalScoreDisplay2">0</span></h2>
           <img id="player2Dice" src="">

@@ -6,8 +6,9 @@ body {
   font-size: 1.2em;
   /* background: linear-gradient(to right, #ee9ca7, #ffdde1); */
   /* background: linear-gradient(to right, #2c3e50, #3498db); */
+  background: linear-gradient(to right, #373b44, #4286f4);
   font-family: Englebert;
-  background:#3498db;
+  padding-top: 10px;
 }
 #description{
   background: whitesmoke;
@@ -29,19 +30,19 @@ form {
   color: #3498db;
   text-decoration: underline;
 }
-/* h1 {
-  font-family: ;
-} */
-.col-4,.col-3 {
+h1 {
+  font-family: Walter Turncoat;
+}
+.col-md-4,.col-md-3 {
   border: 1px solid black;
   padding: 20px;
   border-radius: 9px;
   background: whitesmoke; 
 }
-.col-3 {
+.col-md-3 {
   height: 200px;
 }
-.col-4 {
+.col-md-4 {
   height: 350px;
 }
 .row {
@@ -85,17 +86,26 @@ h1,h3 {
 .notPlaying {
   opacity: 0.78;
 }
-.btn-info {
+.btn-play {
   height: 30px;
   width: 30px;
   border-radius: 50%;
   background: #3498db;
   outline-style: none;
 }
-.btn-info:hover {
+.btn-play:hover {
   background: white;
   color: #3498db;
   border: 1px solid #3498db;
+}
+.btn {
+  color: white;
+  background: #4286f4;
+  border: 1px solid #4286f4;
+}
+.btn:hover {
+  color: #4286f4;
+  background: white;
 }
 #game-board {
   border: 1px solid black;
@@ -120,4 +130,13 @@ h1,h3 {
 #new-buttons {
   text-align: center;
   margin-top: 30px;
+}
+.btn-danger {
+  color: white;
+  background: crimson;
+  border: 1px solid crimson;
+}
+.btn-danger:hover{
+  color: crimson;
+  background: white;
 }
