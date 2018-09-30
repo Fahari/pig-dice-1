@@ -3,7 +3,7 @@
 ### Author
 Marvin Chomba
 
-### Descriptiom
+### Description
 This is a two-player game.
 Each turn, a player repeatedly rolls a die until either a 1 is rolled or the player decides to "hold":
 
@@ -19,7 +19,7 @@ The first player to score 100 or more points wins.
 4. Git
 
 ### Program Behaviour
-| Behaviour   |      Input      |  Resukt(output) |
+| Behaviour   |      Input      |  Result(output) |
 |----------|:-------------:|------:|
 | User rolls a 2 |  2 is added to the score | 2 |
 | User rolls a 3 |  3 is added to the score | 3 |
