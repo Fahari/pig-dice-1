@@ -40,7 +40,8 @@ Use this command in your terminal
 2. Use this command in your terminal.
 `git clone https://github.com/marvinChomba/quiz-board`
 3. __Enjoy__
-
+### Known Bugs
+The images of the dice may fail to load
 ### Live site
 You can view the live site [here](https://marvinchomba.github.io/pig-dice/)
 
