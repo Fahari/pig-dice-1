@@ -12,7 +12,7 @@ pigDice.prototype.globalScore2 = 0;
 pigDice.prototype.rollDice =  function() {
   var dice = Math.floor(Math.random() * 6) + 1;
   $(".dice-image").show();
-  $(".dice-image img").attr("src","../dice-" + dice + ".png");
+  $(".dice-image img").attr("src","../images/dice-" + dice + ".png");
   if(dice !== 1) {
     this.roundScore+=dice;
     $(".roundScoreDisplay" + this.userPlaying).text(this.roundScore);
