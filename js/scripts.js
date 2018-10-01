@@ -6,13 +6,13 @@ function pigDice(p1,p2) {
 pigDice.prototype.userToStart = 1;
 pigDice.prototype.userPlaying = 1;
 pigDice.prototype.roundScore = 0;
-pigDice.prototype.finalScore = 10;
+pigDice.prototype.finalScore = 100;
 pigDice.prototype.globalScore1 = 0;
 pigDice.prototype.globalScore2 = 0;
 pigDice.prototype.rollDice =  function() {
   var dice = Math.floor(Math.random() * 6) + 1;
   $(".dice-image").show();
-  $(".dice-image img").attr("src","../images/dice-" + dice + ".png");
+  $(".dice-image img").attr("src","../dice-" + dice + ".png");
   if(dice !== 1) {
     this.roundScore+=dice;
     $(".roundScoreDisplay" + this.userPlaying).text(this.roundScore);
