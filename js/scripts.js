@@ -20,6 +20,7 @@ pigDice.prototype.rollDice =  function() {
   } else {
     alert("Oh no you got a 1");
     this.otherPlayer();
+    $("#dice-display").text("");
   }
 }
 pigDice.prototype.hold = function(){ 
