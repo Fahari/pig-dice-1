@@ -11,18 +11,19 @@ pigDice.prototype.globalScore1 = 0;
 pigDice.prototype.globalScore2 = 0;
 pigDice.prototype.rollDice =  function() {
   var dice = Math.floor(Math.random() * 6) + 1;
-  $(".dice-image").show();
-  $(".dice-image img").attr("src","../images/dice-" + dice + ".png");
+  
   if(dice !== 1) {
     this.roundScore+=dice;
     $(".roundScoreDisplay" + this.userPlaying).text(this.roundScore);
+    $("#dice-display").show();
+    $("#dice-display").text(dice);
   } else {
     alert("Oh no you got a 1");
     this.otherPlayer();
   }
 }
 pigDice.prototype.hold = function(){ 
-  $(".dice-image").hide();
+  $("#dice-display").hide();
   if(this.userPlaying === 1) {
     this.globalScore1+=this.roundScore;
     $(".globalScoreDisplay1").text(this.globalScore1);
